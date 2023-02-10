@@ -1,0 +1,57 @@
+<!Doctype html>
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="commentaire" id="commentaires">
+        </div>
+
+        <form method="post" action="">
+            <label for="pseudo">Pseudo</label><br>
+            <input type="text" id="pseudo" name="pseudo" maxlength="20" pattern="[a-zA-Z0-9.-_]+" title="caractère autorisés : a-zA-Z0-9.-_"><br>
+
+            <label for="message">Message</label><br>
+            <textarea id="message" name="message" cols="50" rows="7"></textarea><br>
+
+            <input type="submit" value="Envoyer le message" onclick="sendComment()">
+        </form>
+
+        <script>
+            function sendComment() {
+                // Récupération des données du formulaire
+                let pseudo = document.getElementById("pseudo").value;
+                let message = document.getElementById("message").value;
+
+                // Envoi des données au serveur
+                fetch('addComment.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    body: `pseudo=${pseudo}&message=${message}`
+                })
+                .then(response => response.text())
+                .then(text => {
+                    console.log(text);
+
+                    // Raffraîchissement de la liste des commentaires
+                    updateCommentaires();
+                });
+            }
+
+            function updateCommentaires() {
+                // Récupération des commentaires depuis le serveur
+                fetch('getComments.php')
+                .then(response => response.text())
+                .then(text => {
+                    // Mise à jour du contenu de la div "commentaires"
+                    document.getElementById("commentaires").innerHTML = text;
+                });
+            }
+
+            // Appel de la fonction updateCommentaires à l'ouverture de la page
+            updateCommentaires();
+        </script>
+    </body>
+</html>

@@ -1,0 +1,11 @@
+Pour mettre à jour automatiquement les messages sans rechargement de page, vous pouvez utiliser JavaScript avec l'API Fetch 
+pour interagir avec votre serveur PHP. Voici un exemple de code JavaScript pour votre fichier index.html :
+
+Ce code utilise l'API Fetch pour envoyer les données du formulaire au serveur PHP via une requête POST à l'URL addComment.php
+ lorsque l'utilisateur clique sur le bouton "Envoyer le message". Il utilise également une autre requête GET à l'URL getComments.php 
+ pour récupérer la liste des commentaires et mettre à jour la div "commentaires". 
+ La fonction updateCommentaires() est appelée à l'ouverture de la page pour afficher les commentaires existants, et est égal
+
+Le fichier addComment.php pour enregistrer un commentaire envoyé via une requête AJAX :
+
+Et le fichier getComments.php pour récupérer les commentaires :
