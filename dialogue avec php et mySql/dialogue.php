@@ -3,6 +3,7 @@
 $mysqli = new Mysqli('localhost', 'root', '', 'dialogue');
 $contenu = '';
 
+
 //----------------Enregistrement---------------//
 if($_POST){
     //Récupérer le saisi de l'internaute et l'afficher sur la page web
