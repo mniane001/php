@@ -1,7 +1,6 @@
 <?php
 $contenu = '';
 
-
 //----------------Enregistrement---------------//
 if($_POST){
     //Récupérer le saisi de l'internaute et l'afficher sur la page web
